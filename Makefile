@@ -3,10 +3,8 @@ BUILD := \
 
 
 DEPS := \
-	beamerthemegemini.sty \
-	beamercolorthemegemini.sty \
-	beamercolorthememit.sty \
-	beamercolorthemelabsix.sty \
+ beamerthemegemini.sty \
+ themebeamercolorthemegemini.sty \
 
 
 LATEX  := lualatex
