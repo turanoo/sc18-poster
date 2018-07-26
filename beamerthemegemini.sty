@@ -123,14 +123,22 @@
 \setbeamertemplate{headline}
 {
   \begin{beamercolorbox}{headline}
-    \begin{columns}
-      \begin{column}{\paperwidth}
+    \begin{columns}[c]
+    \begin{column}{.2\paperwidth}[T]
+        \hskip5cm
+        \includegraphics[width=0.75\textwidth]{assets/NAU}
+    \end{column}
+      \begin{column}{.6\paperwidth}
         \usebeamerfont{headline}
         \vskip3ex
         \centering
         {\usebeamerfont{headline title}\usebeamercolor[fg]{headline title}\inserttitle\\[0.5ex]}
         {\usebeamerfont{headline author}\usebeamercolor[fg]{headline author}\insertauthor\\[1ex]}
         {\usebeamerfont{headline institute}\usebeamercolor[fg]{headline institute}\insertinstitute\\[1ex]}
+      \end{column}
+      \begin{column}{.2\paperwidth}
+          \includegraphics[width=0.75\textwidth]{assets/qiime2}
+          \hskip5cm
       \end{column}
     \end{columns}
     \vspace{5ex}
