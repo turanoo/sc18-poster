@@ -58,11 +58,11 @@
 % Title
 % ====================
 
-\title{Some fancy title: followed by some more text}
+\title{Enabling Reproducible Microbiome Science through Decentralized Provenance Tracking in QIIME 2}
 
-\author{Alyssa P. Hacker \inst{1} \and Ben Bitdiddle \inst{2} \and Lem E. Tweakit \inst{2}}
+\author{Chris Keefe \inst{1} \and Turan Naimey}
 
-\institute[shortinst]{\inst{1} Some Institute \samelineand \inst{2} Another Institute}
+\institute[shortinst]{\inst{1} Northern Arizona University; Pathogen and Microbiome Institute}
 
 % ====================
 % Body
@@ -76,9 +76,11 @@
 
 \begin{column}{\colwidth}
 
-  \begin{block}{A block title}
+  \begin{block}{Objective and Introduction}
 
-    Some block contents, followed by a diagram, followed by a dummy paragraph.
+    We will demonstrate the ways in which automatic, integrated, decentralized
+    provenance tracking in QIIME 2 enables reproducible microbiome science,
+    using a sample analysis as framework for discussion.
 
     \begin{figure}
       \centering
@@ -90,18 +92,35 @@
       \caption{A figure caption.}
     \end{figure}
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies
-    eget libero ac ullamcorper. Integer et euismod ante. Aenean vestibulum
-    lobortis augue, ut lobortis turpis rhoncus sed. Proin feugiat nibh a
-    lacinia dignissim. Proin scelerisque, risus eget tempor fermentum, ex
-    turpis condimentum urna, quis malesuada sapien arcu eu purus.
+    QIIME 2 is a powerful, extensible, and decentralized microbiome analysis
+    package with a focus on data and analysis transparency. QIIME 2 allows
+    researchers to start an analysis with raw DNA sequence data and finish with
+    publication-quality figures and statistical results. QIIME 2 gives its
+    users access to the latest and greatest computational methods through the
+    plugin system allowing other researchers or programmers to develop plugins
+    for their needs. One of the greatest perks of QIIME 2 is its ability to
+    remain interface agnostic. QIIME 2 can be used in API, Command Line and
+    Graphical interfaces allowing users of different expertise levels to
+    utilize the tools available in QIIME 2 effectively. QIIME 2 provides
+    decentralized data provenance tracking which records all the methods and
+    analysis techniques used on an Artifact in a QIIME 2 environment.
 
   \end{block}
 
-  \begin{block}{A block containing a list}
+  \begin{block}{Creating a QIIME 2 artifact = initiating provenance tracking}
 
-    Nam vulputate nunc felis, non condimentum lacus porta ultrices. Nullam sed
-    sagittis metus. Etiam consectetur gravida urna quis suscipit.
+   In order to work in QIIME2, we must first import the data we plan to
+   analyze, and prepare it for analysis. We are working with multiplexed
+   paired-end sequences, so we’ll place all three files (forward, reverse, and
+   barcode sequences) into a new directory, and run ```qiime tools import...```
+   to create a new QIIME 2 artifact.
+
+   \textbf{An artifact, in this context, is a collection of data and its
+   associated metadata, including information describing the type of the data,
+   its format, and its provenance - that is, how the data was generated. As we
+   continue our analysis, each artifact we create contains all of the
+   information QIIME 2 needs to ensure we are running computational analyses on
+   the correct type of data. }
 
     \begin{itemize}
       \item \textbf{Mauris tempor} risus nulla, sed ornare
