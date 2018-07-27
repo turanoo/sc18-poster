@@ -60,7 +60,7 @@
 
 \title{Enabling Reproducible Microbiome Science through Decentralized Provenance Tracking in QIIME 2}
 
-\author{Chris Keefe \inst{1} \and Turan Naimey}
+\author{Chris Keefe \inst{1} \and Turan Naimey \inst{1}}
 
 \institute[shortinst]{\inst{1} Northern Arizona University; Pathogen and Microbiome Institute}
 
@@ -79,13 +79,8 @@
   \begin{block}{Objective and Introduction}
 
     \textbf{Objective:} To demonstrate the ways in which automatic, integrated, decentralized
-    provenance tracking in QIIME 2 enables reproducible microbiome science,
+    provenance tracking in QIIME 2\cite{framework|qiime2:2018.8.0.dev0+1.g2788661|0} enables reproducible microbiome science,
     using a sample analysis as framework for discussion.
-
-    \textbf{Introduction:} QIIME 2 is a powerful, extensible, and decentralized microbiome analysis
-    package with a focus on data and analysis transparency. QIIME 2 allows
-    researchers to start an analysis with raw DNA sequence data and finish with
-    publication-quality figures and statistical results.
 
     \textbf{QIIME 2 Key Features:}
     \begin{itemize}
@@ -98,22 +93,17 @@
 
   \begin{block}{Creating a QIIME 2 artifact = initiating provenance tracking}
 
-   In order to work in QIIME 2, we must first import the data we plan to
-   analyze and prepare it for analysis.  We are working with multiplexed
-   paired-end sequences, so we’ll place the necessary files into a new
-   directory, and run \code{qiime tools import <args>} to create a new QIIME 2 artifact.
+   In order to work in QIIME 2, we must first import our data to create a new
+   QIIME 2 artifact. We then demultiplex our data, passing the new artifact
+   into \code{q2-demux}, alongside a column of sample metadata containing
+   barcode sequences. \code{link to source repo}
 
    \textbf{A QIIME 2  Artifact is an immutable collection of data and its associated
-   metadata, including the semantic type of the data, its format, and its
-   provenance - that is, how the data was generated}.
-
-   \textbf{Using Artifacts rather than raw data allows QIIME 2 to ensure actions are only
-   performed on appropriate data types}.
-
-   \textbf{Each action generates new artifacts whose provenance metadata includes all
-   actions since (and including) the original import. Further, it will contain
-   a comprehensive history of the data in the artifact, including:}
-
+   metadata, including the \textit{type}, \textit{format}, and \textit{provenance}.
+   Using Artifacts rather than plain files helps QIIME 2 ensure actions
+   performed are meaningful. Each action generates new artifacts whose
+   provenance metadata includes a comprehensive history of the data in the
+   artifact, including:}
     \begin{itemize}
       \item \textbf{the processes to which the data was subjected}
       \item \textbf{all parameters chosen when running these processes}
@@ -121,20 +111,14 @@
       \item \textbf{version information for all software involved (QIIME 2 and all relevant plugins)}
     \end{itemize}
 
-    Before we begin our analysis, it is necessary for us to demultiplex our
-    data. We will pass our newly-created artifact into the \code{q2-demux plugin},
-    alongside a column of sample metadata containing barcode sequences. Working
-    with data like these frequently, we scripted a simple command-line workflow
-    for a shell to handle these first steps quickly and automatically. \code{link to
-    source repo}
+
 
   \end{block}
 
-  \begin{block}{QIIME 2 analyses are host-agnostic. Provenance metadata storage is decentralized.}
+  \begin{block}{QIIME 2 analyses are host-agnostic.}
 
-    The next phase in our analysis, de-noising the data, will be computationally
-    intensive. A multi-day runtime on an HPC node is typical, so we will take
-    advantage of a high-performance compute cluster for our analysis.
+    De-noising the data will be computationally intensive, so we use a
+    high-performance cluster.
 
     \code{[Screencap: CLI running on Monsoon - sub workstation CLI for now]}
 
@@ -143,214 +127,98 @@
     through any QIIME 2 interface on any host, accumulating and retaining
     accurate accurate provenance information}.
 
-    By incorporating this information and the relevant data into a single
-    artifact file, that file can be shared, viewed, and manipulated easily
-    without risk of losing or mis-recording the methods used.
-
   \end{block}
-
-\end{column}
-
-\separatorcolumn
-
-\begin{column}{\colwidth}
-
-  \begin{block}{A block containing an enumerated list}
-
-    Vivamus congue volutpat elit non semper. Praesent molestie nec erat ac
-    interdum. In quis suscipit erat. \textbf{Phasellus mauris felis, molestie
-    ac pharetra quis}, tempus nec ante. Donec finibus ante vel purus mollis
-    fermentum. Sed felis mi, pharetra eget nibh a, feugiat eleifend dolor. Nam
-    mollis condimentum purus quis sodales. Nullam eu felis eu nulla eleifend
-    bibendum nec eu lorem. Vivamus felis velit, volutpat ut facilisis ac,
-    commodo in metus.
-
-    \begin{enumerate}
-      \item \textbf{Morbi mauris purus}, egestas at vehicula et, convallis
-        accumsan orci. Orci varius natoque penatibus et magnis dis parturient
-        montes, nascetur ridiculus mus.
-      \item \textbf{Cras vehicula blandit urna ut maximus}. Aliquam blandit nec
-        massa ac sollicitudin. Curabitur cursus, metus nec imperdiet bibendum,
-        velit lectus faucibus dolor, quis gravida metus mauris gravida turpis.
-      \item \textbf{Vestibulum et massa diam}. Phasellus fermentum augue non
-        nulla accumsan, non rhoncus lectus condimentum.
-    \end{enumerate}
-
-  \end{block}
-
-  \begin{block}{Fusce aliquam magna velit}
-
-    Et rutrum ex euismod vel. Pellentesque ultricies, velit in fermentum
-    vestibulum, lectus nisi pretium nibh, sit amet aliquam lectus augue vel
-    velit. Suspendisse rhoncus massa porttitor augue feugiat molestie. Sed
-    molestie ut orci nec malesuada. Sed ultricies feugiat est fringilla
-    posuere.
-
-    \begin{figure}
-      \centering
-      \begin{tikzpicture}
-        \begin{axis}[
-            scale only axis,
-            no markers,
-            domain=0:2*pi,
-            samples=100,
-            axis lines=center,
-            axis line style={-},
-            ticks=none]
-          \addplot[red] {sin(deg(x))};
-          \addplot[blue] {cos(deg(x))};
-        \end{axis}
-      \end{tikzpicture}
-      \caption{Another figure caption.}
-    \end{figure}
-
-  \end{block}
-
-  \begin{block}{Nam cursus consequat egestas}
-
-    Nulla eget sem quam. Ut aliquam volutpat nisi vestibulum convallis. Nunc a
-    lectus et eros facilisis hendrerit eu non urna. Interdum et malesuada fames
-    ac ante \textit{ipsum primis} in faucibus. Etiam sit amet velit eget sem
-    euismod tristique. Praesent enim erat, porta vel mattis sed, pharetra sed
-    ipsum. Morbi commodo condimentum massa, \textit{tempus venenatis} massa
-    hendrerit quis. Maecenas sed porta est. Praesent mollis interdum lectus,
-    sit amet sollicitudin risus tincidunt non.
-
-    Etiam sit amet tempus lorem, aliquet condimentum velit. Donec et nibh
-    consequat, sagittis ex eget, dictum orci. Etiam quis semper ante. Ut eu
-    mauris purus. Proin nec consectetur ligula. Mauris pretium molestie
-    ullamcorper. Integer nisi neque, aliquet et odio non, sagittis porta justo.
-
-    \begin{itemize}
-      \item \textbf{Sed consequat} id ante vel efficitur. Praesent congue massa
-        sed est scelerisque, elementum mollis augue iaculis.
-        \begin{itemize}
-          \item In sed est finibus, vulputate
-            nunc gravida, pulvinar lorem. In maximus nunc dolor, sed auctor eros
-            porttitor quis.
-          \item Fusce ornare dignissim nisi. Nam sit amet risus vel lacus
-            tempor tincidunt eu a arcu.
-          \item Donec rhoncus vestibulum erat, quis aliquam leo
-            gravida egestas.
-        \end{itemize}
-      \item \textbf{Sed luctus, elit sit amet} dictum maximus, diam dolor
-        faucibus purus, sed lobortis justo erat id turpis.
-      \item \textbf{Pellentesque facilisis dolor in leo} bibendum congue.
-        Maecenas congue finibus justo, vitae eleifend urna facilisis at.
-    \end{itemize}
-
-  \end{block}
-
-\end{column}
-
-\separatorcolumn
-
-\begin{column}{\colwidth}
 
   \begin{block}{QIIME 2 analyses are interface-agnostic. Automatic provenance tracking saves time and alleviates uncertainty.}
 
-    The body of our analysis will take multiple paths, incorporating data
-    exploration, decision-making, and final analyses based on these. We will
-    gloss over a number of steps in this discussion, allowing us to focus on
-    key points. Complete method details of our analysis are available in the
-    provenance graphs at \code{[QR CODE]: repo data outcomes.}
+    \begin{enumerate}
+      \item Investigate alpha and beta diversity using the Artifact API in
+      a Jupyter Notebook\cite{PER-GRA:2007}: Python3
+      \item Subsequent analysis is handled in QIIME 2 Studio (q2studio), a GUI
+      that provides asynchronous process handling and access to all
+      QIIME 2 plugins in our environment
+    \end{enumerate}
 
-    After creating visual summaries of our denoised data and building a
-    phylogenetic tree, we will investigate alpha and beta diversity. To use
-    alpha and beta diversity, we must first subsample our samples to create a
-    fair comparison. We call this process rarefaction.
-
-    By manipulating a \code{[rich, interactive visualization]} in QIIME 2 View,
-    we are able to select an appropriate “rarefaction depth” at which to
-    subsample before rarefying with \code{core-metrics-phylogenetic}.
-
-    \textbf{Using QIIME 2’s artifact API in a jupyter notebook gives us access to the
-    full power of python 3, and allows us to iterate over sections of analysis
-    independently, making quick changes to method parameters while preserving
-    unaffected portions of our workflow.}
-
-    We use this approach to experiment with different rarefaction depths,
-    selecting the depth that best balances the cost of sample loss against the
-    benefit of increased numbers of sequences per sample.
-
-    \code{Jupyter Notebook: core-metrics-phylogenetic (and remaining alpha and beta diversity analysis?)}
-
-    Once we’ve finished diversity analysis, we move our workflow into QIIME 2
-    Studio (q2studio), a graphical user interface that provides convenient
-    access to all of the QIIME 2 plugins in our environment, and also gives us
-    \textbf{asynchronous process handling}. This gives us the ability to continue
-    working while a computational process is running in the background.
-
-    \textbf{Throughout this complex series of decisions and computations, QIIME 2
-    handles all of the “methods” note-taking for us, and the provenance
-    information included in all of our artifacts and visualizations alleviates
-    the risk of data loss due to uncertainty about which file is correct}.
+    \textbf{Throughout this complex analysis, QIIME 2 records our methods.
+    The provenance data in our artifacts and visualizations minimizes
+    uncertainty about which file is correct}.
 
   \end{block}
 
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{A block containing some visualizations}
+
+  \end{block}
+
+  \begin{block}{Our Analysis and the Atacama Study}
+
+    The analysis which frames this poster is based on work by Neilson et al in
+    “Significant Impacts of Increasing Aridity on the Arid Soil Microbiome”\cite{Neilsone00195-16}.
+    \code{reference Atacama Citation} This study documents correlations between aridity and changes in the soil
+    microbiome along two arid-to-hyperarid transcripts in the Atacama Desert,
+    Chile. For new users interested in understanding our approach, a tutorial
+    based on this study is available in the QIIME 2 docs. \code{link Q2 tutorial}
+
+  \end{block}
+
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
   \begin{block}{QIIME 2 visualizations can be shared and viewed without a software install, and contain complete provenance information.}
 
-    As we close in on reaching a conclusion and publishing our findings,
-    interactive visualizations play a significant role in understanding and
-    communicating about our data. \code{interactive visualizations from the
-    analysis: e.g. taxa-barplots, etc}
-
-    QIIME 2’s integrated and automatic tracking of data provenance allows us
-    to review which methods and parameters were used in our analysis,
-    simplifying production of a complete and accurate methods section and/or
-    supplemental digital materials for submission.
+    \begin{enumerate}
+      \item Interactive visualizations play a significant role in understanding and
+      communicating our data. \code{interactive visualizations from the
+      analysis:  taxa-barplots, etc}
+      \item QIIME 2’s provenance graphs allow us to review which methods and
+      parameters were used, simplifying creation of an accurate methods section
+      and supplementary materials.
+      \item We generate the citations for this poster with \code{qiime tools citations}
+      \item We submit, confident that our reported methods are accurate, our
+      visualizations represent our final experimental methods, and our
+      citations are appropriate and complete.
+      \item Reviewers use \code{q2view} to confirm methods and outcomes are
+      aligned, without the need to download any special software.
+    \end{enumerate}
 
     \textbf{By packaging data with provenance, QIIME 2 reduces the risk that the
-    methods used to produce a given outcome are accidentally misreported}.
+      methods used to produce a given outcome are accidentally misreported}.
 
-    \textbf{QIIME 2 has integrated citation information within the plugins, allowing
-    researchers to export citations for publication. BibTeX citations for this
-    poster were generated by \code{qiime tools citations}}.
-
-    Going into the review process, we have a high level of confidence that our
-    reported methods are accurate, that we have selected the visualizations
-    that represent our final experimental methods, and that our citations for
-    those methods are appropriate and complete.
-
-    \textbf{Without the need to download any special software, members of a review
-    committee can view rich, interactive visualizations, and inspect the
-    methods used to produce a given data set or visualization.} Reviewers have
-    a new tool for spot-checking that methods and outcomes are aligned.
+    \textbf{QIIME 2 has integrated citation information into plugins, allowing
+    researchers to export citations as BibTeX}.
 
     \code{q2view viz QR code: give it a try}
 
-    Readers of published pieces are given insight into the analytical
-    processes and parameters used, simplifying the process of crafting follow
-    up studies which reproduce or extend the original research.
+  \end{block}
 
-    \begin{table}
-      \centering
-      \begin{tabular}{l r r c}
-        \toprule
-        \textbf{First column} & \textbf{Second column} & \textbf{Third column} & \textbf{Fourth} \\
-        \midrule
-        Foo & 13.37 & 384,394 & \alpha \\
-        Bar & 2.17 & 1,392 & \beta \\
-        Baz & 3.14 & 83,742 & \delta \\
-        Qux & 7.59 & 974 & \gamma \\
-        \bottomrule
-      \end{tabular}
-      \caption{A table caption.}
-    \end{table}
+  \begin{block}{Decentralized provenance tracking enables study reproduction, replication \& extension.}
 
-    Donec quis posuere ligula. Nunc feugiat elit a mi malesuada consequat. Sed
-    imperdiet augue ac nibh aliquet tristique. Aenean eu tortor vulputate,
-    eleifend lorem in, dictum urna. Proin auctor ante in augue tincidunt
-    tempor. Proin pellentesque vulputate odio, ac gravida nulla posuere
-    efficitur. Aenean at velit vel dolor blandit molestie. Mauris laoreet
-    commodo quam, non luctus nibh ullamcorper in. Class aptent taciti sociosqu
-    ad litora torquent per conubia nostra, per inceptos himenaeos.
+    QIIME 2’s provenance metadata makes it easy for anyone to reproduce our
+    computational analysis independently to confirm the quality of our results.
+    Should we choose to expand our study, or conduct further research using
+    similar methods, provenance graphs provide a “road map”.
 
-    Nulla varius finibus volutpat. Mauris molestie lorem tincidunt, iaculis
-    libero at, gravida ante. Phasellus at felis eu neque suscipit suscipit.
-    Integer ullamcorper, dui nec pretium ornare, urna dolor consequat libero,
-    in feugiat elit lorem euismod lacus. Pellentesque sit amet dolor mollis,
-    auctor urna non, tempus sem.
+  \end{block}
+
+  \begin{block}{Future Work}
+
+    \begin{itemize}
+      \item \textbf{Allow QIIME 2 to consume provenance metadata:} Reading
+      provenance \textit{into} QIIME 2 could allow for computer-assisted
+      introspection into research methods, automated transcription of methods
+      for publication, and auto-generation of “pipeline” scripts for common workflows.
+      \item \textbf{QIIME 2 Studio and HPC:} In the future, we hope that q2studio might interact
+      directly with HPC schedulers, to simplify the process of connecting with
+      and running computationally-intensive processes remotely.
+    \end{itemize}
 
   \end{block}
 
