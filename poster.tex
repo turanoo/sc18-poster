@@ -33,7 +33,7 @@
 
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[size=custom,width=120,height=72,scale=1.0]{beamerposter}
+\usepackage[size=custom,width=120,height=88,scale=1.0]{beamerposter}
 \usetheme{gemini}
 \usecolortheme{gemini}
 \usepackage{graphicx}
@@ -119,8 +119,9 @@
 
     De-noising the data will be computationally intensive, so we use a
     high-performance cluster.
-
-    \code{[Screencap: CLI running on Monsoon - sub workstation CLI for now]}
+    \begin{figure}[tph!]
+      {\includegraphics[width=25cm,height=10cm]{assets/dada2}}
+    \end{figure}
 
     \textbf{The integrated and decentralized handling of provenance metadata in
     artifacts makes it easy for QIIME 2 users to transfer files and run jobs
@@ -143,6 +144,10 @@
     The provenance data in our artifacts and visualizations minimizes
     uncertainty about which file is correct}.
 
+    \begin{figure}[tph!]
+      {\includegraphics[width=25cm]{assets/taxabar}}
+    \end{figure}
+
   \end{block}
 
 \end{column}
@@ -151,7 +156,20 @@
 
 \begin{column}{\colwidth}
 
-  \begin{block}{A block containing some visualizations}
+  \begin{block}{Visualizations}
+    \begin{figure}[tph!]
+      {\includegraphics[height=20cm]{assets/provenance}}
+    \end{figure}
+
+    \begin{figure}[tph!]
+      {\includegraphics[height=18cm]{assets/taxabar-plot}}
+    \end{figure}
+
+    \begin{figure}[tph!]
+      {\includegraphics[height=18cm]{assets/alpha-correlation}}
+    \end{figure}
+
+
 
   \end{block}
 
@@ -195,7 +213,9 @@
     \textbf{QIIME 2 has integrated citation information into plugins, allowing
     researchers to export citations as BibTeX}.
 
-    \code{q2view viz QR code: give it a try}
+    \begin{figure}[tph!]
+      {\includegraphics[height=15cm]{assets/emperor}}
+    \end{figure}
 
   \end{block}
 
