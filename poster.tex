@@ -33,13 +33,15 @@
 
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[size=custom,width=120,height=88,scale=1.0]{beamerposter}
+\usepackage[size=custom,width=130 ,height=90,scale=1.0]{beamerposter}
 \usetheme{gemini}
 \usecolortheme{gemini}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{tcolorbox}
+\usepackage{geometry}
 
 % ====================
 % Lengths
@@ -98,18 +100,21 @@
    into \code{q2-demux}, alongside a column of sample metadata containing
    barcode sequences. \code{link to source repo}
 
-   \textbf{A QIIME 2  Artifact is an immutable collection of data and its associated
+   \begin{tcolorbox}
+   [width=\textwidth, colframe=blue]
+   {A QIIME 2  Artifact is an immutable collection of data and its associated
    metadata, including the \textit{type}, \textit{format}, and \textit{provenance}.
    Using Artifacts rather than plain files helps QIIME 2 ensure actions
    performed are meaningful. Each action generates new artifacts whose
    provenance metadata includes a comprehensive history of the data in the
    artifact, including:}
     \begin{itemize}
-      \item \textbf{the processes to which the data was subjected}
-      \item \textbf{all parameters chosen when running these processes}
-      \item \textbf{citation information relevant to the methods chosen}
-      \item \textbf{version information for all software involved (QIIME 2 and all relevant plugins)}
+      \item {the processes to which the data was subjected}
+      \item {all parameters chosen when running these processes}
+      \item {citation information relevant to the methods chosen}
+      \item {version information for all software involved (QIIME 2 and all relevant plugins)}
     \end{itemize}
+    \end{tcolorbox}
 
 
 
@@ -118,15 +123,19 @@
   \begin{block}{QIIME 2 analyses are host-agnostic.}
 
     De-noising the data will be computationally intensive, so we use a
-    high-performance cluster.
+    high-performance cluster. (Figure 1)
     \begin{figure}[tph!]
-      {\includegraphics[width=25cm,height=10cm]{assets/dada2}}
+      {\includegraphics[width=18cm, height=8cm]{assets/dada2}}
+      \caption{DADA2 denoising in q2cli}
     \end{figure}
 
-    \textbf{The integrated and decentralized handling of provenance metadata in
+    \begin{tcolorbox}
+    [width=\textwidth, colframe=blue]
+    {The integrated and decentralized handling of provenance metadata in
     artifacts makes it easy for QIIME 2 users to transfer files and run jobs
     through any QIIME 2 interface on any host, accumulating and retaining
     accurate accurate provenance information}.
+  \end{tcolorbox}
 
   \end{block}
 
@@ -134,18 +143,22 @@
 
     \begin{enumerate}
       \item Investigate alpha and beta diversity using the Artifact API in
-      a Jupyter Notebook\cite{PER-GRA:2007}: Python3
+      a Jupyter Notebook\cite{PER-GRA:2007}: Python3 (Figure 2)
       \item Subsequent analysis is handled in QIIME 2 Studio (q2studio), a GUI
       that provides asynchronous process handling and access to all
-      QIIME 2 plugins in our environment
+      QIIME 2 plugins in our environment (Figure 4)
     \end{enumerate}
 
-    \textbf{Throughout this complex analysis, QIIME 2 records our methods.
+    \begin{tcolorbox}
+    [width=\textwidth, colframe=blue]
+    {Throughout this complex analysis, QIIME 2 records our methods.
     The provenance data in our artifacts and visualizations minimizes
     uncertainty about which file is correct}.
+    \end{tcolorbox}
 
     \begin{figure}[tph!]
       {\includegraphics[width=25cm]{assets/taxabar}}
+      \caption{Jupyter Notebook}
     \end{figure}
 
   \end{block}
@@ -158,15 +171,18 @@
 
   \begin{block}{Visualizations}
     \begin{figure}[tph!]
-      {\includegraphics[height=20cm]{assets/provenance}}
+      {\includegraphics[width=\linewidth]{assets/provenance}}
+      \caption{Provenance tree in QIIME 2}
     \end{figure}
 
     \begin{figure}[tph!]
-      {\includegraphics[height=18cm]{assets/taxabar-plot}}
+      {\includegraphics[height=18cm]{assets/q2studio}}
+      \caption{QIIME 2 Studio}
     \end{figure}
 
     \begin{figure}[tph!]
-      {\includegraphics[height=18cm]{assets/alpha-correlation}}
+      {\includegraphics[width=\linewidth]{assets/taxabar-plot}}
+      \caption{Taxa-bar Plot}
     \end{figure}
 
 
@@ -207,14 +223,18 @@
       aligned, without the need to download any special software.
     \end{enumerate}
 
-    \textbf{By packaging data with provenance, QIIME 2 reduces the risk that the
-      methods used to produce a given outcome are accidentally misreported}.
-
-    \textbf{QIIME 2 has integrated citation information into plugins, allowing
+    \begin{tcolorbox}
+    [width=\textwidth, colframe=blue]
+    {By packaging data with provenance, QIIME 2 reduces the risk that the
+    methods used to produce a given outcome are accidentally misreported.
+    QIIME 2 has integrated citation information into plugins, allowing
     researchers to export citations as BibTeX}.
+    \end{tcolorbox}
+
 
     \begin{figure}[tph!]
-      {\includegraphics[height=15cm]{assets/emperor}}
+      {\includegraphics[height=17cm]{assets/emperor}}
+      \caption{Emperor visualization in q2view}
     \end{figure}
 
   \end{block}
