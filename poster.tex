@@ -81,7 +81,7 @@
   \begin{block}{Objective and Introduction}
 
     \textbf{Objective:} To demonstrate the ways in which automatic, integrated, decentralized
-    provenance tracking in QIIME 2\cite{framework|qiime2:2018.8.0.dev0+1.g2788661|0} enables reproducible microbiome science,
+    provenance tracking in QIIME 2 \cite{framework|qiime2:2018.8.0.dev0+1.g2788661|0} enables reproducible microbiome science,
     using a sample analysis as framework for discussion.
 
     \textbf{QIIME 2 Key Features:}
@@ -98,12 +98,12 @@
    In order to work in QIIME 2, we must first import our data to create a new
    QIIME 2 artifact. We then demultiplex our data, passing the new artifact
    into \code{q2-demux}, alongside a column of sample metadata containing
-   barcode sequences. \code{link to source repo}
+   barcode sequences.
 
    \begin{tcolorbox}
    [width=\textwidth, colframe=blue]
-   {A QIIME 2  Artifact is an immutable collection of data and its associated
-   metadata, including the \textit{type}, \textit{format}, and \textit{provenance}.
+   {A QIIME 2 \code{Artifact} is an immutable collection of data and its associated
+           metadata, including the \textit{type}, \textit{format}, and \textit{provenance} (Figure \ref{fig:provenance}).
    Using Artifacts rather than plain files helps QIIME 2 ensure actions
    performed are meaningful. Each action generates new artifacts whose
    provenance metadata includes a comprehensive history of the data in the
@@ -115,18 +115,17 @@
       \item {version information for all software involved (QIIME 2 and all relevant plugins)}
     \end{itemize}
     \end{tcolorbox}
-
-
-
   \end{block}
 
-  \begin{block}{QIIME 2 analyses are host-agnostic.}
+  \begin{block}{QIIME 2 analyses are host-agnostic}
 
     De-noising the data will be computationally intensive, so we use a
-    high-performance cluster. (Figure 1)
+    high-performance cluster. (Figure \ref{fig:dada2})
+
     \begin{figure}[tph!]
       {\includegraphics[width=18cm, height=8cm]{assets/dada2}}
       \caption{DADA2 denoising in q2cli}
+      \label{fig:dada2}
     \end{figure}
 
     \begin{tcolorbox}
@@ -139,14 +138,15 @@
 
   \end{block}
 
-  \begin{block}{QIIME 2 analyses are interface-agnostic. Automatic provenance tracking saves time and alleviates uncertainty.}
+  \begin{block}{QIIME 2 analyses are interface-agnostic}
+    Automatic provenance tracking saves time and alleviates uncertainty.
 
     \begin{enumerate}
       \item Investigate alpha and beta diversity using the Artifact API in
-      a Jupyter Notebook\cite{PER-GRA:2007} (Figure 2)
-      \item Subsequent analysis is handled in QIIME 2 Studio (q2studio), a GUI
+      a Jupyter Notebook \cite{PER-GRA:2007} (Figure \ref{fig:taxabar})
+      \item Subsequent analysis is handled in QIIME 2 Studio, a GUI
       that provides asynchronous process handling and access to all
-      QIIME 2 plugins in our environment (Figure 4)
+      QIIME 2 plugins in our environment (Figure \ref{fig:q2studio})
     \end{enumerate}
 
     \begin{tcolorbox}
@@ -159,6 +159,7 @@
     \begin{figure}[tph!]
       {\includegraphics[width=25cm]{assets/taxabar}}
       \caption{Jupyter Notebook}
+      \label{fig:taxabar}
     \end{figure}
 
   \end{block}
@@ -173,31 +174,30 @@
     \begin{figure}[tph!]
       {\includegraphics[width=\linewidth]{assets/provenance}}
       \caption{Provenance tree in QIIME 2}
+      \label{fig:provenance}
     \end{figure}
 
     \begin{figure}[tph!]
       {\includegraphics[height=18cm]{assets/q2studio}}
       \caption{QIIME 2 Studio}
+      \label{fig:q2studio}
     \end{figure}
 
     \begin{figure}[tph!]
       {\includegraphics[width=\linewidth]{assets/taxabar-plot}}
       \caption{Taxa-bar Plot}
+      \label{fig:taxabar-plot}
     \end{figure}
-
-
-
   \end{block}
 
   \begin{block}{Our Analysis and the Atacama Study}
-
     The analysis which frames this poster is based on work by Neilson et al in
-    “Significant Impacts of Increasing Aridity on the Arid Soil Microbiome”\cite{Neilsone00195-16}.
-    This study documents correlations between aridity and changes in the soil
-    microbiome along two arid-to-hyperarid transects in the Atacama Desert,
-    Chile. For new users interested in understanding our approach, a tutorial
-    based on this study is available in the QIIME 2 docs. \code{link Q2 tutorial}
-
+    “Significant Impacts of Increasing Aridity on the Arid Soil Microbiome”
+    \cite{Neilsone00195-16}. This study documents correlations between aridity
+    and changes in the soil microbiome along two arid-to-hyperarid transects in
+    the Atacama Desert, Chile. For new users interested in understanding
+    our approach, a tutorial based on this study is available in the
+    QIIME 2 docs.
   \end{block}
 
 \end{column}
@@ -206,12 +206,13 @@
 
 \begin{column}{\colwidth}
 
-  \begin{block}{QIIME 2 visualizations can be shared and viewed without a software install, and contain complete provenance information.}
+    \begin{block}{Sharing QIIME 2 visualizations}
+      QIIME 2 visualizations can be shared and viewed without a software
+      install, and contain complete provenance information.
 
     \begin{enumerate}
       \item Interactive visualizations play a significant role in understanding and
-      communicating our data. \code{interactive visualizations from the
-      analysis:  taxa-barplots, etc} (Figure 5)
+      communicating our data. (Figure \ref{fig:taxabar-plot})
       \item QIIME 2’s provenance graphs allow us to review which methods and
       parameters were used, simplifying creation of an accurate methods section
       and supplementary materials.
@@ -219,7 +220,7 @@
       \item We submit, confident that our reported methods are accurate, our
       visualizations represent our final experimental methods, and our
       citations are appropriate and complete.
-      \item Reviewers use \code{q2view} to confirm methods and outcomes are
+      \item Reviewers use https://view.qiime2.org to confirm methods and outcomes are
       aligned, without the need to download any special software. (Figure 6)
     \end{enumerate}
 
@@ -235,11 +236,12 @@
     \begin{figure}[tph!]
       {\includegraphics[height=17cm]{assets/emperor}}
       \caption{Emperor visualization in q2view}
+      \label{fig:emperor}
     \end{figure}
 
   \end{block}
 
-  \begin{block}{Decentralized provenance tracking enables study \\ reproduction, replication \& extension.}
+  \begin{block}{Decentralized provenance tracking enables study \\ reproduction, replication \& extension}
 
     QIIME 2’s provenance metadata makes it easy for anyone to reproduce our
     computational analysis independently to confirm the quality of our results.
@@ -255,7 +257,7 @@
       provenance \textit{into} QIIME 2 could allow for computer-assisted
       introspection into research methods, automated transcription of methods
       for publication, and auto-generation of “pipeline” scripts for common workflows.
-      \item \textbf{QIIME 2 Studio and HPC:} In the future, we hope that q2studio might interact
+      \item \textbf{QIIME 2 Studio and HPC:} In the future, we hope that QIIME 2 Studio might interact
       directly with HPC schedulers, to simplify the process of connecting with
       and running computationally-intensive processes remotely.
     \end{itemize}
@@ -265,7 +267,7 @@
   \begin{block}{References}
 
     \nocite{*}
-    \footnotesize{\bibliographystyle{plain}\bibliography{poster}}
+    \bibliographystyle{acm}\bibliography{poster}
 
   \end{block}
 
