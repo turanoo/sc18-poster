@@ -125,7 +125,7 @@
 
     \begin{figure}[tph!]
       {\includegraphics[height=16cm]{assets/HPC_Analysis}}
-      \caption{\,Running computationally intensive methods on NAU's Monsoon cluster}
+      \caption{\,Script used for denoising demultiplexed sequences and summarizing the results using NAU's Monsoon cluster}
       \label{fig:dada2}
     \end{figure}
 
@@ -141,7 +141,7 @@
 
   \begin{block}{QIIME 2 analyses are interface-agnostic}
     Automatic provenance tracking saves time and alleviates uncertainty.
-    More experienced users may run downstream analysis using the Artifact API in
+    Experienced users may run downstream analysis using the Artifact API in
     a Jupyter Notebook \cite{PER-GRA:2007} (Figure \ref{fig:taxabar})
     Alternatively, analysis may proceed in QIIME 2 Studio, a GUI
     that provides asynchronous process handling and access to all
@@ -156,7 +156,7 @@
 
     \begin{figure}[tph!]
       {\includegraphics[height=10cm]{assets/jupyter}}
-      \caption{\, Classifying sequences and producing a unifrac-biplot visualization in Jupyter Notebook}
+      \caption{\, Selection from the Jupyter Notebook used for downstream analysis conducted with the Artifact API}
       \label{fig:taxabar}
     \end{figure}
 
@@ -181,19 +181,19 @@
   \begin{block}{Visualizations}
     \begin{figure}[tph!]
       {\includegraphics[height=14cm]{assets/provenance}}
-      \caption{\,Provenance tree showing the artifacts involved in the production of Taxa-bar Plot visualization.}
+      \caption{\,Provenance tree describing the production of our taxonomic bar plot visualization. QR code provides access to both provenance tree and bar plot (Figure 4).}
       \label{fig:provenance}
     \end{figure}
 
     \begin{figure}[tph!]
       {\includegraphics[height=20cm]{assets/taxabar-plot}}
-      \caption{\,Taxa-bar Plot }
+      \caption{\,Taxonomic bar plot sorted by Average Soil Relative Humidity }
       \label{fig:taxabar-plot}
     \end{figure}
 
     \begin{figure}[tph!]
       {\includegraphics[height=18cm]{assets/q2studio}}
-      \caption{\,QIIME 2 Studio}
+      \caption{\,QIIME 2 Studio provides GUI access to all QIIME 2 plugins in the computing environment}
       \label{fig:q2studio}
     \end{figure}
   \end{block}
@@ -250,7 +250,7 @@
 
     \begin{figure}[tph!]
       {\includegraphics[height=17cm]{assets/emperor}}
-      \caption{\,Emperor visualization in q2view}
+      \caption{\,Color gradient represents Average Soil Relative Humidity. Vector colors represent independent clades. \\The magnitude and direction of a vector represents the relative contribution of a given amplicon sequence variant (ASV) to the distance between samples (points). Red: Unknown (K)Bacteria ASV, Green: (P)Actinobacteria (C)Actinobacteria, \\Blue: (P)Actinobacteria (C)Acidimicrobiia, Purple: (P)Proteobacteria (C)Gammaproteobacteria}
       \label{fig:emperor}
     \end{figure}
 
